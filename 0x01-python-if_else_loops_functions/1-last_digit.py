@@ -11,8 +11,8 @@ else:
     last_digit = last_digit * -1
 
 if last_digit > 5:
-    print("Last digit of {} is {} and is \
-         than 5".format(number, last_digit))
+    print("Last digit of {} is {} and is"
+          " than 5".format(number, last_digit))
 elif (last_digit < 6) and (last_digit != 0):
     print("Last digit of {} is {} and is less "
           "than 6 and not".format(number, last_digit))
