@@ -24,4 +24,4 @@ if __name__ == "__main__":
         print("Unknown operator. Available operators: +, -, * and /")
         sys.exit(1)
 
-    print("{} {} {} = {}".format(num1,operator,num2, result))
+    print("{} {} {} = {}".format(num1, operator,mnum2, result))
