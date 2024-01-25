@@ -1,3 +1,7 @@
 #!/usr/bin/python3
 class Square(object):
-    pass
+    """This module creates an empty class Square
+    that defines a square."""
+    def square():
+        """A square method"""
+        pass
