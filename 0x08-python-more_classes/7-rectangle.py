@@ -68,7 +68,7 @@ class Rectangle:
             try:
                 rectangle += str(self.print_symbol) * self.__width + '\n'
             except Exception:
-                    rectangle += type(self).print_symbol
+                rectangle += type(self).print_symbol
         return rectangle.rstrip('\n')
 
     def __repr__(self):
