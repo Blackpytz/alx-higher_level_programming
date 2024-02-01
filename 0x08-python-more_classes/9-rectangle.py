@@ -81,7 +81,7 @@ class Rectangle:
     def square(cls, size=0):
         """Returns a new rectangle instance with
             width == height == size
-        
+
         Args:
             size (int): size of the new rectangle height and width"""
         return (cls(size, size))
