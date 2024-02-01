@@ -65,7 +65,10 @@ class Rectangle:
             return ""
         rectangle = ""
         for _ in range(self.__height):
-            rectangle += str(Rectangle.print_symbol) * self.__width + '\n'
+            try:
+                rectangle += str(self.print_symbol) * self.__width + '\n'
+            except Exception:
+                    rectangle += type(self).print_symbol
         return rectangle.rstrip('\n')
 
     def __repr__(self):
