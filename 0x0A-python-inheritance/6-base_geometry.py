@@ -2,7 +2,7 @@
 """
 Module: 6-base_geometry.py
 
-Contains an empty class BaseGeometry
+Contains a class BaseGeometry
 """
 
 
