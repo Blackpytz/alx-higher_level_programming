@@ -22,7 +22,7 @@ class Square(BaseGeometry):
 
     def area(self):
         """Calculate the area of a square"""
-        return self.__size * self.__size
+        return self.__size ** 2
 
     def __str__(self):
         return '[Rectangle] {}/{}'.format(self.__size, self.__size)
