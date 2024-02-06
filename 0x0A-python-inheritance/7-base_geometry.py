@@ -8,7 +8,7 @@ Contains a class BaseGeometry
 
 class BaseGeometry:
     """Defines a class called BaseGeometry"""
-    def area(aelf):
+    def area(self):
         """
         raises an Exception with message
         'area() is not implemented'
