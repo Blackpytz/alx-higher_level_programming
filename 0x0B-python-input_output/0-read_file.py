@@ -13,5 +13,5 @@ def read_file(filename=""):
     Args:
         filename (str): text file to be printed
     """
-    with open(filename, encoding="utf-8") as a_file:
-        print(a_file.read())
+    with open(filename, 'r', encoding='utf-8') as a_file:
+        print(a_file.read(), end="")
