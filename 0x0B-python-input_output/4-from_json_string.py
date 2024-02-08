@@ -12,7 +12,7 @@ def from_json_string(my_str):
     """
     Defines a function takes a single argument
     and returns a JSON string representation
-    
+
     Args:
         my_str: A JSON serializable object
     """
