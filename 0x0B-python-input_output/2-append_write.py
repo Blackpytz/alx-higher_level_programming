@@ -10,7 +10,7 @@ file (UTF8) and returns the number of characters added
 def append_write(filename="", text=""):
     """
     Defines a function that takes two arguments
-    
+
     Args:
         filename (txt): name of the file to append to
         text (str): string of characters to append to the txt file
