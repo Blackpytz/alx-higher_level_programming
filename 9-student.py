@@ -11,7 +11,7 @@ class Student:
     def __init__(self, first_name, last_name, age):
         """
         Initializes the student object
-        
+
         Args:
             first_name (str): a string variable
             last_name (str): a stiring variable
