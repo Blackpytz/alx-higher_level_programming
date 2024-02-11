@@ -6,7 +6,6 @@ Contains a class Rectangle that inherits from Base
 """
 
 from models.base import Base
-from sys import args
 
 
 class Rectangle(Base):
@@ -121,3 +120,21 @@ class Rectangle(Base):
         f = "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.__x, self.__y,
                                                   self.__width, self.__height)
         return f
+
+    def update(self, *args):
+        """
+        Defines a public method that updates the class Rectangle
+        by assigning an argument to each attribute
+
+        Args:
+            - 1st argument should be the id attribute
+            - 2nd argument should be the width attribute
+            - 3rd argument should be the height attribute
+            - 4th argument should be the x attribute
+            - 5th argument should be the y attribute
+        """
+        self.id = args[0]
+        self.__width = args[1]
+        self.__height = args[2]
+        self.__x = args[3]
+        self.__y = args[4]
