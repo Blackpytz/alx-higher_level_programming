@@ -6,6 +6,7 @@ Contains a class Rectangle that inherits from Base
 """
 
 from models.base import Base
+from sys import args
 
 
 class Rectangle(Base):
@@ -102,5 +103,21 @@ class Rectangle(Base):
         Public method that prints in stdout the Rectangle instance
         with the character #
         """
-        for _ in range(self.__height):
-            print('#' * self.__width)
+        if self.__width == 0 or self.__height == 0:
+            print("")
+            return
+
+        [print("") for y in range(self.y)]
+        for h in range(self.height):
+            [print(" ", end="") for x in range(self.x)]
+            [print("#", end="") for w in range(self.width)]
+            print("")
+
+    def __str__(self):
+        """
+        overrides the __str__ method so that it returns
+        [Rectangle] (<id>) <x>/<y> - <width>/<height>
+        """
+        f = "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.__x, self.__y,
+                                                  self.__width, self.__height)
+        return f
