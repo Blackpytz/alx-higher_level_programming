@@ -68,7 +68,7 @@ class Base:
 
     @classmethod
     def create(cls, **dictionary):
-        """ 
+        """
         Returns an instance with all attributes already set
 
         Args:
