@@ -133,8 +133,6 @@ class Rectangle(Base):
             - 4th argument should be the x attribute
             - 5th argument should be the y attribute
         """
-        self.id = args[0]
-        self.__width = args[1]
-        self.__height = args[2]
-        self.__x = args[3]
-        self.__y = args[4]
+        attributes = ['id', 'width', 'height', 'x', 'y']
+        for i, arg in enumerate(args):
+            setattr(self, attributes[i], arg)
