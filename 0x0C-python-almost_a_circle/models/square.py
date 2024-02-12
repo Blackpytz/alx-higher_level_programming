@@ -19,6 +19,58 @@ class Square(Rectangle):
         the value of size
         """
 
+    @property
+    def size(self):
+        return self.width
+
+    @size.setter
+    def size(self, value):
+        """
+        Sets the size of the square.
+
+        Args:
+            value (int): The size of the square.
+
+        Raises:
+            TypeError: If the value is not an integer.
+            ValueError: If the value is less than or equal to 0.
+        """
+        self.width = value
+        self.height = value
+
+    def update(self, *args, **kwargs):
+        """
+        Defines a public method that updates the class Rectangle
+        by assigning an argument to each attribute
+
+        Args:
+            - 1st argument should be the id attribute
+            - 2nd argument should be the size attribute
+            - 3rd argument should be the x attribute
+            - 4th argument should be the y attribute
+        """
+        if args and len(args) > 0:
+            # Assign args to attributes in the order they are
+            attributes = ['id', 'size', 'x', 'y']
+            for i, value in enumerate(args):
+                if i < len(attributes):
+                    setattr(self, attributes[i], value)
+        else:
+            # Assign kwargs to attributes
+            for key, value in kwargs.items():
+                if hasattr(self, key):
+                    setattr(self, key, value)
+
+    def to_dictionary(self):
+        """Returns the dictionary representation of a Square"""
+        dictionary = {}
+        if self.size and self.x and self.y:
+            dictionary['id'] = self.id
+            dictionary['x'] = self.x
+            dictionary['size'] = self.size
+            dictionary['y'] = self.y
+        return dictionary
+
     def __str__(self):
         """
         overrides the __str__ method so that it returns
@@ -28,21 +80,3 @@ class Square(Rectangle):
                                               self.y, self.width)
         return f
 
-    @property
-    def size(self):
-        return self.width
-
-    @size.setter
-    def size(self, value):
-        """
-        Sets the size of the square.
-    
-        Args:
-            value (int): The size of the square.
-    
-        Raises:
-            TypeError: If the value is not an integer.
-            ValueError: If the value is less than or equal to 0.
-        """
-        self.width = value
-        self.height = value

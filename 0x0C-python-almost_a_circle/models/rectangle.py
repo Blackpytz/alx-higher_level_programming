@@ -112,16 +112,6 @@ class Rectangle(Base):
             [print("#", end="") for w in range(self.width)]
             print("")
 
-    def __str__(self):
-        """
-        overrides the __str__ method so that it returns
-        [Rectangle] (<id>) <x>/<y> - <width>/<height>
-        """
-        f = "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.__x,
-                                                    self.__y, self.__width,
-                                                    self.__height)
-        return f
-
     def update(self, *args, **kwargs):
         """
         Defines a public method that updates the class Rectangle
@@ -145,3 +135,24 @@ class Rectangle(Base):
             for key, value in kwargs.items():
                 if hasattr(self, key):
                     setattr(self, key, value)
+
+    def to_dictionary(self):
+        """Returns the dictionary representation of a Rectangle"""
+        dictionary = {}
+        if self.width and self.height and self.x and self.y:
+            dictionary['x'] = self.x
+            dictionary['y'] = self.y
+            dictionary['id'] = self.id
+            dictionary['height'] = self.height
+            dictionary['width'] = self.width
+        return dictionary
+
+    def __str__(self):
+        """
+        overrides the __str__ method so that it returns
+        [Rectangle] (<id>) <x>/<y> - <width>/<height>
+        """
+        f = "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.__x,
+                                                    self.__y, self.__width,
+                                                    self.__height)
+        return f
