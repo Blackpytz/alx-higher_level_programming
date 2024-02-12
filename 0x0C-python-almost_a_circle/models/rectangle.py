@@ -102,7 +102,7 @@ class Rectangle(Base):
         Public method that prints in stdout the Rectangle instance
         with the character #
         """
-        if self.__width == 0 or self.__height == 0:
+        if not self.__width or not self.__height:
             print("")
             return
 
@@ -117,11 +117,12 @@ class Rectangle(Base):
         overrides the __str__ method so that it returns
         [Rectangle] (<id>) <x>/<y> - <width>/<height>
         """
-        f = "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.__x, self.__y,
-                                                  self.__width, self.__height)
+        f = "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.__x,
+                                                    self.__y, self.__width,
+                                                    self.__height)
         return f
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """
         Defines a public method that updates the class Rectangle
         by assigning an argument to each attribute
@@ -133,7 +134,14 @@ class Rectangle(Base):
             - 4th argument should be the x attribute
             - 5th argument should be the y attribute
         """
-        attributes = ['id', 'width', 'height', 'x', 'y']
-        for i, arg in enumerate(args):
-            if i < len(attributes):
-                setattr(self, attributes[i], arg)
+        if args and len(args) > 0:
+            # Assign args to attributes in the order they are
+            attributes = ['id', 'width', 'height', 'x', 'y']
+            for i, value in enumerate(args):
+                if i < len(attributes):
+                    setattr(self, attributes[i], value)
+        else:
+            # Assign kwargs to attributes
+            for key, value in kwargs.items():
+                if hasattr(self, key):
+                    setattr(self, key, value)
