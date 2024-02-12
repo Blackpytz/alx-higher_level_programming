@@ -11,7 +11,7 @@ from models.rectangle import Rectangle
 class Square(Rectangle):
     """Defines the Square class"""
     def __init__(self, size, x=0, y=0, id=None):
-        """Initializes the class object"""
+        """Initializing square class"""
         super().__init__(size, size, x, y, id)
         """
         Call the super class constructor with id, x, y, width
