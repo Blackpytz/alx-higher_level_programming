@@ -42,7 +42,7 @@ class Base:
     def save_to_file(cls, list_objs):
         """
         Writes the JSON string representation of list_objs to a file
-
+        return {'id': self.id, 'size': self.size, 'x': self.x, 'y': self.y}
         Args:
             list_objs (obj): A list of objects
         """
