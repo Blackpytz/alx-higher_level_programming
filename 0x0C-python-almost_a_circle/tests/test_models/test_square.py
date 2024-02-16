@@ -412,7 +412,7 @@ class TestSquare_stdout(unittest.TestCase):
     def test_display_size_x_y(self):
         s = Square(2, 3, 2, 1)
         capture = TestSquare_stdout.capture_stdout(s, "display")
-        display = "\n\n  ##\n  ##\n"
+        display = "\n\n   ##\n   ##\n"
         self.assertEqual(display, capture.getvalue())
 
     def test_display_one_arg(self):
@@ -422,6 +422,65 @@ class TestSquare_stdout(unittest.TestCase):
 
 
 class TestSquare_update_args(unittest.TestCase):
+    """ Unittest for testing update args method of the Square class. """
+
+    def test_update_args_zero(self):
+        s = Square(10, 10, 10, 10)
+        s.update()
+        self.assertEqual("[Square] (10) 10/10 - 10", str(s))
+
+    def test_update_args_one(self):
+        s = Square(10, 10, 10, 10)
+        s.update(89)
+        self.assertEqual("[Square] (89) 10/10 - 10", str(s))
+
+    def test_update_args_two(self):
+        s = Square(10, 10, 10, 10)
+        s.update(89, 2)
+        self.assertEqual("[Square] (89) 10/10 - 2", str(s))
+
+    def test_update_args_three(self):
+        s = Square(10, 10, 10, 10)
+        s.update(89, 2, 3)
+        self.assertEqual("[Square] (89) 3/10 - 2", str(s))
+
+    def test_update_args_four(self):
+        s = Square(10, 10, 10, 10)
+        s.update(89, 2, 3, 4, 5)
+        self.assertEqual("[Square] (89) 3/4 - 2", str(s))
+
+    def test_update_args_more_than_four(self):
+        s = Square(1, 1, 1, 1)
+        s.update(89, 2, 3, 4, 5)
+        self.assertEqual("[Square] (89) 3/4 - 2", str(s))
+
+    def test_update_args_width_setter(self):
+        s = Square(10, 10, 10, 10)
+        s.update(33, 5)
+        self.assertEqual(5, s.width)
+
+    def test_update_args_height_setter(self):
+        s = Square(1, 1, 1, 1)
+        s.update(33, 2)
+        self.assertEqual(2, s.height)
+
+    def test_update_args_None_id(self):
+        s = Square(1, 1, 1, 1)
+        s.update(None)
+        correct = "[Square] ({}) 1/1 - 1".format(s.id)
+        self.assertEqual(correct, str(s))
+
+    def test_update_args_None_id_and_more(self):
+        s = Square(1, 1, 1, 1)
+        s.update(None, 3, 3)
+        correct = "[Square] ({}) 3/1 - 3".format(s.id)
+        self.assertEqual(correct, str(s))
+
+    def test_update_args_twice(self):
+        s = Square(1, 1, 1, 1)
+        s.update(98, 2, 2, 5)
+        s.update(4, 3, 2, 89)
+        self.assertEqual("[Square] (4) 2/89 - 3", str(s))
 
 
 if __name__ == "__main__":
