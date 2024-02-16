@@ -3,8 +3,8 @@
 Defines unittest for models/square.py
 
 Unittest classes:
-    TestSquare_instantiation - line 23
-    TestSquare_size - line 88
+    TestSquare_instantiation - line 24
+    TestSquare_size - line 87
     TestSquare_x - line 166
     TestSquare_y - line 238
     TestSquare_order_of_initialization - line 306
@@ -82,6 +82,107 @@ class TestSquare_instantiation(unittest.TestCase):
 
     def test_y_getter(self):
         self.assertEqual(Square(50).y, 0)
+
+
+class TestSquare_size(unittest.TestCase):
+    """Unittests for testing size initialization of the Square class."""
+
+    def test_None_size(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square(None)
+
+    def test_str_size(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square("FUCK OFF!")
+
+    def test_float_size(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square(5.5)
+
+    def test_complex_size(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square(complex(5))
+
+    def test_dict_size(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square({"a": 4, "b": 2}, 2)
+
+    def test_bool_size(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square(True, 2, 3)
+
+    def test_list_size(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square([1, 2, 3])
+
+    def test_set_size(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square({1, 2, 3}, 2)
+
+    def test_tuple_size(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square((1, 2, 3), 2, 3)
+
+    def test_frozenset_size(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square(frozenset({1, 2, 3, 4}))
+
+    def test_range_size(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square(range(5))
+
+    def test_bytes_size(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square(b'python')
+
+    def test_bytearray_size(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square(bytearray(b'abcdefg'))
+
+    def test_memoryview_size(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square(memoryview(b'abcdefg'))
+
+    def test_inf_size(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square(float('inf'))
+
+    def test_nan_size(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square(float('nan'))
+
+    def test_negative_size(self):
+        """ Test size values """
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            Square(-1, 2)
+
+    def test_zero_size(self):
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            Square(0, 2)
+
+
+class TestSquare_x(unittest.TestCase):
+    """ Unittest for testing initialization of Square x attribute. """
+
+    def test_None_x(self):
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            Square(1, None)
+
+    def test_str_x(self):
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            Square(1, "Damn!")
+
+    def test_float_x(self):
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            Square(1, 5.5)
+
+    def test_complex_x(self):
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            Square(1, complex(10))
+
+    def test_dict_x(self):
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            Square(1, {"a": 5, "b": 2}, 2)
 
 
 if __name__ == "__main__":
