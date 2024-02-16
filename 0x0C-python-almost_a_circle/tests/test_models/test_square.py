@@ -302,6 +302,45 @@ class TestSquare_y(unittest.TestCase):
 
 
 class TestSquare_order_of_initalization(unittest.TestCase):
+    """ Unittest for testing order of Square attribute initialization. """
+
+    def test_size_before_x(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square("Invalid size", "invalid x")
+
+    def test_size_before_y(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square("Invalid size", 1, "invalid y")
+
+    def test_x_before_y(self):
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            Square(1, "invalid x", "invalid y")
+
+
+class TestSquare_area(unittest.TestCase):
+    """ Unittest for testing the area method of the Square class. """
+
+    def test_area_small(self):
+        self.assertEqual(Square(10, 0, 0, 1).area(), 100)
+
+    def test_area_large(self):
+        s = Square(999999999999999999, 0, 0, 1)
+        self.assertEqual(s.area(), 999999999999999998000000000000000001)
+
+    def test_area_changed_attributes(self):
+        s = Square(2, 0, 0, 1)
+        s.size = 7
+        self.assertEqual(49, s.area())
+
+    def test_area_one_arg(self):
+        s = Square(2, 10, 1, 1)
+        with self.assertRaises(TypeError):
+            s.area(1)
+
+
+class TestSquare_stdout(unittest.TestCase):
+    """ Unittests for testing __str__ and display methods of Square class. """
+
     
 
 
